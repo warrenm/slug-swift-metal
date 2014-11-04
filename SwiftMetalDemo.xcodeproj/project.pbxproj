@@ -1,0 +1,317 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		833DFADC19F1C3D800E6B947 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833DFADB19F1C3D800E6B947 /* AppDelegate.swift */; };
+		833DFAE019F1C3D800E6B947 /* DemoOne.metal in Sources */ = {isa = PBXBuildFile; fileRef = 833DFADF19F1C3D800E6B947 /* DemoOne.metal */; };
+		833DFAE519F1C3D800E6B947 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 833DFAE419F1C3D800E6B947 /* Images.xcassets */; };
+		8369A41B19FDFB6500AA5704 /* MBEDemoTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369A41A19FDFB6500AA5704 /* MBEDemoTwo.swift */; };
+		8369A41D19FDFC8A00AA5704 /* DemoTwo.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8369A41C19FDFC8A00AA5704 /* DemoTwo.metal */; };
+		8373EB2819F9AF9F00FBF5F3 /* MBEDemoZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8373EB2719F9AF9F00FBF5F3 /* MBEDemoZero.swift */; };
+		8382D4571A08C4AE00792543 /* bluemarble.png in Resources */ = {isa = PBXBuildFile; fileRef = 8382D4561A08C4AE00792543 /* bluemarble.png */; };
+		8382D4591A08C88300792543 /* MBEDemoThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382D4581A08C88300792543 /* MBEDemoThree.swift */; };
+		8382D45B1A09464C00792543 /* GeometricTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382D45A1A09464C00792543 /* GeometricTypes.swift */; };
+		8382D45D1A09483700792543 /* DemoThree.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8382D45C1A09483700792543 /* DemoThree.metal */; };
+		8382D45F1A09630F00792543 /* MBEDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382D45E1A09630F00792543 /* MBEDemoViewController.swift */; };
+		8382D4611A09725700792543 /* SphereGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8382D4601A09725700792543 /* SphereGenerator.swift */; };
+		839D1DF519FAD0F6001E1053 /* MBEDemoOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839D1DC519FAC291001E1053 /* MBEDemoOne.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		833DFAD619F1C3D800E6B947 /* SwiftMetal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftMetal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		833DFADA19F1C3D800E6B947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		833DFADB19F1C3D800E6B947 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SwiftMetalDemo/AppDelegate.swift; sourceTree = "<group>"; };
+		833DFADF19F1C3D800E6B947 /* DemoOne.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = DemoOne.metal; path = SwiftMetalDemo/DemoOne.metal; sourceTree = "<group>"; };
+		833DFAE419F1C3D800E6B947 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SwiftMetalDemo/Images.xcassets; sourceTree = "<group>"; };
+		8369A41A19FDFB6500AA5704 /* MBEDemoTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MBEDemoTwo.swift; path = SwiftMetalDemo/MBEDemoTwo.swift; sourceTree = "<group>"; };
+		8369A41C19FDFC8A00AA5704 /* DemoTwo.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = DemoTwo.metal; path = SwiftMetalDemo/DemoTwo.metal; sourceTree = "<group>"; };
+		8373EB2719F9AF9F00FBF5F3 /* MBEDemoZero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MBEDemoZero.swift; path = SwiftMetalDemo/MBEDemoZero.swift; sourceTree = "<group>"; };
+		8382D4561A08C4AE00792543 /* bluemarble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bluemarble.png; path = SwiftMetalDemo/bluemarble.png; sourceTree = "<group>"; };
+		8382D4581A08C88300792543 /* MBEDemoThree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MBEDemoThree.swift; path = SwiftMetalDemo/MBEDemoThree.swift; sourceTree = "<group>"; };
+		8382D45A1A09464C00792543 /* GeometricTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeometricTypes.swift; path = SwiftMetalDemo/GeometricTypes.swift; sourceTree = "<group>"; };
+		8382D45C1A09483700792543 /* DemoThree.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = DemoThree.metal; path = SwiftMetalDemo/DemoThree.metal; sourceTree = "<group>"; };
+		8382D45E1A09630F00792543 /* MBEDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MBEDemoViewController.swift; path = SwiftMetalDemo/MBEDemoViewController.swift; sourceTree = "<group>"; };
+		8382D4601A09725700792543 /* SphereGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SphereGenerator.swift; path = SwiftMetalDemo/SphereGenerator.swift; sourceTree = "<group>"; };
+		839D1DC519FAC291001E1053 /* MBEDemoOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MBEDemoOne.swift; path = SwiftMetalDemo/MBEDemoOne.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		833DFAD319F1C3D800E6B947 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		833DFACD19F1C3D800E6B947 = {
+			isa = PBXGroup;
+			children = (
+				839D1DC419FAC25B001E1053 /* Demos */,
+				839D1DC319FAC058001E1053 /* Common */,
+				833DFAD719F1C3D800E6B947 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		833DFAD719F1C3D800E6B947 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				833DFAD619F1C3D800E6B947 /* SwiftMetal.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		833DFAD919F1C3D800E6B947 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				833DFADA19F1C3D800E6B947 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			path = SwiftMetalDemo;
+			sourceTree = "<group>";
+		};
+		839D1DC319FAC058001E1053 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8382D4561A08C4AE00792543 /* bluemarble.png */,
+				833DFADB19F1C3D800E6B947 /* AppDelegate.swift */,
+				833DFAE419F1C3D800E6B947 /* Images.xcassets */,
+				833DFAD919F1C3D800E6B947 /* Supporting Files */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		839D1DC419FAC25B001E1053 /* Demos */ = {
+			isa = PBXGroup;
+			children = (
+				8382D45E1A09630F00792543 /* MBEDemoViewController.swift */,
+				8373EB2719F9AF9F00FBF5F3 /* MBEDemoZero.swift */,
+				839D1DC519FAC291001E1053 /* MBEDemoOne.swift */,
+				8369A41A19FDFB6500AA5704 /* MBEDemoTwo.swift */,
+				8382D4581A08C88300792543 /* MBEDemoThree.swift */,
+				833DFADF19F1C3D800E6B947 /* DemoOne.metal */,
+				8369A41C19FDFC8A00AA5704 /* DemoTwo.metal */,
+				8382D45C1A09483700792543 /* DemoThree.metal */,
+				8382D45A1A09464C00792543 /* GeometricTypes.swift */,
+				8382D4601A09725700792543 /* SphereGenerator.swift */,
+			);
+			name = Demos;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		833DFAD519F1C3D800E6B947 /* SwiftMetal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 833DFAF719F1C3D800E6B947 /* Build configuration list for PBXNativeTarget "SwiftMetal" */;
+			buildPhases = (
+				833DFAD219F1C3D800E6B947 /* Sources */,
+				833DFAD319F1C3D800E6B947 /* Frameworks */,
+				833DFAD419F1C3D800E6B947 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftMetal;
+			productName = SwiftMetalDemo;
+			productReference = 833DFAD619F1C3D800E6B947 /* SwiftMetal.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		833DFACE19F1C3D800E6B947 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Metal By Example";
+				TargetAttributes = {
+					833DFAD519F1C3D800E6B947 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 833DFAD119F1C3D800E6B947 /* Build configuration list for PBXProject "SwiftMetalDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 833DFACD19F1C3D800E6B947;
+			productRefGroup = 833DFAD719F1C3D800E6B947 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				833DFAD519F1C3D800E6B947 /* SwiftMetal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		833DFAD419F1C3D800E6B947 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8382D4571A08C4AE00792543 /* bluemarble.png in Resources */,
+				833DFAE519F1C3D800E6B947 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		833DFAD219F1C3D800E6B947 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8382D45F1A09630F00792543 /* MBEDemoViewController.swift in Sources */,
+				8382D4591A08C88300792543 /* MBEDemoThree.swift in Sources */,
+				839D1DF519FAD0F6001E1053 /* MBEDemoOne.swift in Sources */,
+				8373EB2819F9AF9F00FBF5F3 /* MBEDemoZero.swift in Sources */,
+				8382D45B1A09464C00792543 /* GeometricTypes.swift in Sources */,
+				833DFAE019F1C3D800E6B947 /* DemoOne.metal in Sources */,
+				8369A41D19FDFC8A00AA5704 /* DemoTwo.metal in Sources */,
+				8382D4611A09725700792543 /* SphereGenerator.swift in Sources */,
+				833DFADC19F1C3D800E6B947 /* AppDelegate.swift in Sources */,
+				8369A41B19FDFB6500AA5704 /* MBEDemoTwo.swift in Sources */,
+				8382D45D1A09483700792543 /* DemoThree.metal in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		833DFAF519F1C3D800E6B947 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		833DFAF619F1C3D800E6B947 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		833DFAF819F1C3D800E6B947 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SwiftMetalDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		833DFAF919F1C3D800E6B947 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SwiftMetalDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		833DFAD119F1C3D800E6B947 /* Build configuration list for PBXProject "SwiftMetalDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				833DFAF519F1C3D800E6B947 /* Debug */,
+				833DFAF619F1C3D800E6B947 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		833DFAF719F1C3D800E6B947 /* Build configuration list for PBXNativeTarget "SwiftMetal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				833DFAF819F1C3D800E6B947 /* Debug */,
+				833DFAF919F1C3D800E6B947 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 833DFACE19F1C3D800E6B947 /* Project object */;
+}
