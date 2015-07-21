@@ -1,5 +1,5 @@
 //
-//  Demo.metal
+//  DemoTwo.metal
 //  MetalSwift
 //
 //  Created by Warren Moore on 10/23/14.

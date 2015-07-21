@@ -10,8 +10,6 @@
 
 using namespace metal;
 
-constant float3 lightDirection(0.577, 0.577, 0.577);
-
 struct TexturedInVertex
 {
     packed_float4 position [[attribute(0)]];
@@ -31,11 +29,6 @@ struct Uniforms
     float4x4 projectionMatrix;
     float4x4 modelViewMatrix;
 };
-
-static float map(float val, float min0, float max0, float min1, float max1)
-{
-    return min1 + (max1 - min1) * ((val - min0) / (max0 - min0));
-}
 
 vertex TexturedColoredOutVertex vertex_demo_three(device TexturedInVertex *vert [[buffer(0)]],
                                                            constant Uniforms &uniforms [[buffer(1)]],
@@ -57,10 +50,6 @@ fragment half4 fragment_demo_three(TexturedColoredOutVertex vert [[stage_in]],
                                    texture2d<float, access::sample> diffuseTexture [[texture(0)]],
                                    sampler samplr [[sampler(0)]])
 {
-    float diffuseIntensity = saturate(dot(normalize(vert.normal), lightDirection));
-    diffuseIntensity = map(diffuseIntensity, 0, 1, 0.5, 1);
-    diffuseIntensity = 1;
     float4 diffuseColor = diffuseTexture.sample(samplr, vert.texCoords);
-    float3 color = diffuseColor.rgb * diffuseIntensity;
-    return half4(color.r, color.g, color.b, 1);
+    return half4(diffuseColor.r, diffuseColor.g, diffuseColor.b, 1);
 }
