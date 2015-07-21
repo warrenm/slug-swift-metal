@@ -79,7 +79,7 @@ class MBEDemoOneViewController : MBEDemoViewController {
 
             let zAxis = Vector4(x: 0, y: 0, z: -1, w: 0)
             let rotationMatrix = [Matrix4x4.rotationAboutAxis(zAxis, byAngle: rotationAngle)]
-            memcpy(uniformBuffer.contents(), rotationMatrix, UInt(sizeof(Matrix4x4)))
+            memcpy(uniformBuffer.contents(), rotationMatrix, sizeof(Matrix4x4))
             
             let commandBuffer = commandQueue.commandBuffer()
 

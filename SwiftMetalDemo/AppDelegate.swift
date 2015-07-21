@@ -13,7 +13,7 @@ let MBEDemoNumber = 3
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow!
+    var window: UIWindow?
     var rootViewController: UIViewController!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -33,9 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        rootViewController.view.frame = window.bounds
-        window.rootViewController = rootViewController
-        window.makeKeyAndVisible()
+        rootViewController.view.frame = window!.bounds
+        window!.rootViewController = rootViewController
+        window!.makeKeyAndVisible()
         
         return true
     }

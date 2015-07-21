@@ -87,7 +87,7 @@ class MBEDemoTwoViewController : MBEDemoViewController {
             let projectionMatrix = Matrix4x4.perspectiveProjection(aspect, fieldOfViewY: 60, near: 0.1, far: 100.0)
             
             let matrices = [projectionMatrix, modelViewMatrix]
-            memcpy(uniformBuffer.contents(), matrices, UInt(sizeof(Matrix4x4) * 2))
+            memcpy(uniformBuffer.contents(), matrices, sizeof(Matrix4x4) * 2)
 
             let commandBuffer = commandQueue.commandBuffer()
 

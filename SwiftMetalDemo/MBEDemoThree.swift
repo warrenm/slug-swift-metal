@@ -28,11 +28,11 @@ class MBEDemoThreeViewController : MBEDemoViewController {
         let height = CGImageGetHeight(imageRef)
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         
-        let rawData = calloc(height * width * 4, UInt(sizeof(UInt8)))
+        let rawData = calloc(height * width * 4, sizeof(UInt8))
         
-        let bytesPerPixel: UInt = 4
-        let bytesPerRow: UInt = bytesPerPixel * width
-        let bitsPerComponent: UInt = 8
+        let bytesPerPixel = 4
+        let bytesPerRow = bytesPerPixel * width
+        let bitsPerComponent = 8
         
         let options = CGImageAlphaInfo.PremultipliedLast.rawValue | CGBitmapInfo.ByteOrder32Big.rawValue
         
@@ -58,8 +58,8 @@ class MBEDemoThreeViewController : MBEDemoViewController {
                               mipmapLevel: 0,
                               slice: 0,
                               withBytes: rawData,
-                              bytesPerRow: Int(bytesPerRow),
-                              bytesPerImage: Int(bytesPerRow * height))
+                              bytesPerRow: bytesPerRow,
+                              bytesPerImage: bytesPerRow * height)
         
         free(rawData)
         
@@ -146,7 +146,7 @@ class MBEDemoThreeViewController : MBEDemoViewController {
             let projectionMatrix = Matrix4x4.perspectiveProjection(aspect, fieldOfViewY: 60, near: 0.1, far: 100.0)
             
             let matrices = [projectionMatrix, modelViewMatrix]
-            memcpy(uniformBuffer.contents(), matrices, UInt(sizeof(Matrix4x4) * 2))
+            memcpy(uniformBuffer.contents(), matrices, Int(sizeof(Matrix4x4) * 2))
             
             let commandBuffer = commandQueue.commandBuffer()
             
