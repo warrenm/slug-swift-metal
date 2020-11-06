@@ -3,31 +3,31 @@
 //  SwiftMetalDemo
 //
 //  Created by Warren Moore on 11/4/14.
-//  Copyright (c) 2014 Metal By Example. All rights reserved.
+//  Copyright (c) 2014—2020 Warren Moore. All rights reserved.
 //
 
 import Foundation
 
 struct Vector4
 {
-    var x: Float32
-    var y: Float32
-    var z: Float32
-    var w: Float32
+    var x: Float
+    var y: Float
+    var z: Float
+    var w: Float
 }
 
 struct ColorRGBA
 {
-    var r: Float32
-    var g: Float32
-    var b: Float32
-    var a: Float32
+    var r: Float
+    var g: Float
+    var b: Float
+    var a: Float
 }
 
 struct TexCoords
 {
-    var u: Float32
-    var v: Float32
+    var u: Float
+    var v: Float
 }
 
 struct ColoredVertex
@@ -58,7 +58,7 @@ struct Matrix4x4
         W = Vector4(x: 0, y: 0, z: 0, w: 1)
     }
     
-    static func rotationAboutAxis(axis: Vector4, byAngle angle: Float32) -> Matrix4x4
+    static func rotation(about axis: Vector4, by angle: Float) -> Matrix4x4
     {
         var mat = Matrix4x4()
         
@@ -80,11 +80,11 @@ struct Matrix4x4
         return mat
     }
     
-    static func perspectiveProjection(aspect: Float32, fieldOfViewY: Float32, near: Float32, far: Float32) -> Matrix4x4
+    static func perspectiveProjection(aspect: Float, fieldOfViewY: Float, near: Float, far: Float) -> Matrix4x4
     {
         var mat = Matrix4x4()
         
-        let fovRadians = fieldOfViewY * Float32(M_PI / 180.0)
+        let fovRadians = fieldOfViewY * (Float.pi / 180.0)
 
         let yScale = 1 / tan(fovRadians * 0.5)
         let xScale = yScale / aspect

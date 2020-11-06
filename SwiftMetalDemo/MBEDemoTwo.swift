@@ -3,125 +3,128 @@
 //  SwiftMetalDemo
 //
 //  Created by Warren Moore on 10/23/14.
-//  Copyright (c) 2014 Metal By Example. All rights reserved.
+//  Copyright (c) 2014—2020 Warren Moore. All rights reserved.
 //
 
 import UIKit
 
 class MBEDemoTwoViewController : MBEDemoViewController {
-    var depthStencilState: MTLDepthStencilState! = nil
-    var vertexBuffer: MTLBuffer! = nil
-    var indexBuffer: MTLBuffer! = nil
-    var uniformBuffer: MTLBuffer! = nil
-    var depthTexture: MTLTexture! = nil
-    var rotationAngle: Float32 = 0
+    var depthStencilState: MTLDepthStencilState!
+    var vertexBuffer: MTLBuffer!
+    var indexBuffer: MTLBuffer!
+    var uniformBuffer: MTLBuffer!
+    var depthTexture: MTLTexture!
+    var rotationAngle: Float = 0
 
     override func buildPipeline() {
-        let library = device.newDefaultLibrary()!
-        let fragmentFunction = library.newFunctionWithName("fragment_demo_two")
-        let vertexFunction = library.newFunctionWithName("vertex_demo_two")
+        let library = device.makeDefaultLibrary()
+        let fragmentFunction = library?.makeFunction(name: "fragment_demo_two")
+        let vertexFunction = library?.makeFunction(name: "vertex_demo_two")
         
         let vertexDescriptor = MTLVertexDescriptor()
         vertexDescriptor.attributes[0].offset = 0
-        vertexDescriptor.attributes[0].format = .Float4
+        vertexDescriptor.attributes[0].format = .float4
         vertexDescriptor.attributes[0].bufferIndex = 0
         
-        vertexDescriptor.attributes[1].offset = sizeof(Float32) * 4
-        vertexDescriptor.attributes[1].format = .Float4
+        vertexDescriptor.attributes[1].offset = MemoryLayout<Float>.stride * 4
+        vertexDescriptor.attributes[1].format = .float4
         vertexDescriptor.attributes[1].bufferIndex = 0
         
-        vertexDescriptor.attributes[2].offset = sizeof(Float32) * 8
-        vertexDescriptor.attributes[2].format = .Float2
+        vertexDescriptor.attributes[2].offset = MemoryLayout<Float>.stride * 8
+        vertexDescriptor.attributes[2].format = .float2
         vertexDescriptor.attributes[2].bufferIndex = 0
 
-        vertexDescriptor.layouts[0].stepFunction = .PerVertex
-        vertexDescriptor.layouts[0].stride = sizeof(Vertex)
+        vertexDescriptor.layouts[0].stepFunction = .perVertex
+        vertexDescriptor.layouts[0].stride = MemoryLayout<Vertex>.stride
 
         let pipelineDescriptor = MTLRenderPipelineDescriptor()
         pipelineDescriptor.vertexFunction = vertexFunction
         pipelineDescriptor.vertexDescriptor = vertexDescriptor
         pipelineDescriptor.fragmentFunction = fragmentFunction
-        pipelineDescriptor.colorAttachments[0].pixelFormat = .BGRA8Unorm
-        pipelineDescriptor.depthAttachmentPixelFormat = .Depth32Float
+        pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+        pipelineDescriptor.depthAttachmentPixelFormat = .depth32Float
         
-        var error: NSErrorPointer = nil
-        pipeline = device.newRenderPipelineStateWithDescriptor(pipelineDescriptor, error:error)
-        if (pipeline == nil) {
+        do {
+            pipeline = try device.makeRenderPipelineState(descriptor: pipelineDescriptor)
+        } catch {
             print("Error occurred when creating pipeline \(error)")
         }
         
         let depthStencilDescriptor = MTLDepthStencilDescriptor()
-        depthStencilDescriptor.depthCompareFunction = .Less
-        depthStencilDescriptor.depthWriteEnabled = true
-        depthStencilState = device.newDepthStencilStateWithDescriptor(depthStencilDescriptor)
+        depthStencilDescriptor.depthCompareFunction = .less
+        depthStencilDescriptor.isDepthWriteEnabled = true
+        depthStencilState = device.makeDepthStencilState(descriptor: depthStencilDescriptor)
 
-        commandQueue = device.newCommandQueue()
+        commandQueue = device.makeCommandQueue()
     }
 
     override func buildResources() {
-        (vertexBuffer, indexBuffer) = SphereGenerator.sphereWithRadius(1, stacks: 10, slices: 10, device: device)
+        (vertexBuffer, indexBuffer) = SphereGenerator.makeSphere(radius: 1, stacks: 10, slices: 10, device: device)
 
-        uniformBuffer = device.newBufferWithLength(sizeof(Matrix4x4) * 2, options: .OptionCPUCacheModeDefault)
+        uniformBuffer = device.makeBuffer(length: MemoryLayout<Matrix4x4>.stride * 2, options: [])
     }
     
     override func resize() {
         super.resize()
         
         let layerSize = metalLayer.drawableSize
-        var depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptorWithPixelFormat(.Depth32Float,
-            width: Int(layerSize.width),
-            height: Int(layerSize.height),
-            mipmapped: false)
-        depthTexture = device.newTextureWithDescriptor(depthTextureDescriptor)
+        let depthTextureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: .depth32Float,
+                                                                              width: Int(layerSize.width),
+                                                                              height: Int(layerSize.height),
+                                                                              mipmapped: false)
+        depthTextureDescriptor.storageMode = .private
+        depthTextureDescriptor.usage = .renderTarget
+        depthTexture = device.makeTexture(descriptor: depthTextureDescriptor)
     }
 
     override func draw() {
         if let drawable = metalLayer.nextDrawable() {
             let yAxis = Vector4(x: 0, y: -1, z: 0, w: 0)
-            var modelViewMatrix = Matrix4x4.rotationAboutAxis(yAxis, byAngle: rotationAngle)
+            var modelViewMatrix = Matrix4x4.rotation(about: yAxis, by: rotationAngle)
             
             modelViewMatrix.W.z = -2
 
-            let aspect = Float32(metalLayer.drawableSize.width) / Float32(metalLayer.drawableSize.height)
+            let aspect = Float(metalLayer.drawableSize.width) / Float(metalLayer.drawableSize.height)
 
-            let projectionMatrix = Matrix4x4.perspectiveProjection(aspect, fieldOfViewY: 60, near: 0.1, far: 100.0)
+            let projectionMatrix = Matrix4x4.perspectiveProjection(aspect: aspect, fieldOfViewY: 60, near: 0.1, far: 100.0)
             
             let matrices = [projectionMatrix, modelViewMatrix]
-            memcpy(uniformBuffer.contents(), matrices, sizeof(Matrix4x4) * 2)
+            memcpy(uniformBuffer.contents(), matrices, MemoryLayout<Matrix4x4>.stride * 2)
 
-            let commandBuffer = commandQueue.commandBuffer()
+            guard let commandBuffer = commandQueue.makeCommandBuffer() else { return }
 
             let passDescriptor = MTLRenderPassDescriptor()
             passDescriptor.colorAttachments[0].texture = drawable.texture
-            passDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.5, 0.5, 0.5, 1)
-            passDescriptor.colorAttachments[0].loadAction = .Clear
-            passDescriptor.colorAttachments[0].storeAction = .Store
+            passDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+            passDescriptor.colorAttachments[0].loadAction = .clear
+            passDescriptor.colorAttachments[0].storeAction = .store
             
             passDescriptor.depthAttachment.texture = depthTexture
             passDescriptor.depthAttachment.clearDepth = 1
-            passDescriptor.depthAttachment.loadAction = .Clear
-            passDescriptor.depthAttachment.storeAction = .DontCare
+            passDescriptor.depthAttachment.loadAction = .clear
+            passDescriptor.depthAttachment.storeAction = .dontCare
             
-            let indexCount = indexBuffer.length / sizeof(UInt16)
-            let commandEncoder = commandBuffer.renderCommandEncoderWithDescriptor(passDescriptor)!
-            if userToggle {
-                commandEncoder.setTriangleFillMode(.Lines)
+            let indexCount = indexBuffer.length / MemoryLayout<UInt16>.size
+            if let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: passDescriptor) {
+                if userToggle {
+                    commandEncoder.setTriangleFillMode(.lines)
+                }
+                commandEncoder.setRenderPipelineState(pipeline)
+                commandEncoder.setDepthStencilState(depthStencilState)
+                commandEncoder.setFrontFacing(.counterClockwise)
+                commandEncoder.setCullMode(.back)
+                commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
+                commandEncoder.setVertexBuffer(uniformBuffer, offset: 0, index: 1)
+                commandEncoder.drawIndexedPrimitives(type: .triangle,
+                                                     indexCount: indexCount,
+                                                     indexType: .uint16,
+                                                     indexBuffer: indexBuffer,
+                                                     indexBufferOffset: 0)
+                
+                commandEncoder.endEncoding()
             }
-            commandEncoder.setRenderPipelineState(pipeline)
-            commandEncoder.setDepthStencilState(depthStencilState)
-            commandEncoder.setFrontFacingWinding(.CounterClockwise)
-            commandEncoder.setCullMode(.Back)
-            commandEncoder.setVertexBuffer(vertexBuffer, offset: 0, atIndex: 0)
-            commandEncoder.setVertexBuffer(uniformBuffer, offset: 0, atIndex: 1)
-            commandEncoder.drawIndexedPrimitives(.Triangle,
-                                                 indexCount: indexCount,
-                                                 indexType: .UInt16,
-                                                 indexBuffer: indexBuffer,
-                                                 indexBufferOffset: 0)
             
-            commandEncoder.endEncoding()
-            
-            commandBuffer.presentDrawable(drawable)
+            commandBuffer.present(drawable)
             commandBuffer.commit()
             
             rotationAngle += 0.01

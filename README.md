@@ -1,10 +1,10 @@
 # Metal in Swift Demos
 
-Demo of the Metal graphics framework in Swift, as presented to the Swift Language User Group (SF), 4 November 2014.
+Demo of the Metal graphics framework in Swift, as presented to the Swift Language User Group (SF), November 4, 2014.
 
 ## Usage
 
-Set `MBEDemoNumber` to a number between 0 and 3 (inclusive) and deploy to a device running iOS 8+.
+Set `MBEDemoNumber` to a number between 0 and 3 (inclusive) and deploy to a device running iOS 10+.
 
 Demo index:
   0. Clear screen to solid color

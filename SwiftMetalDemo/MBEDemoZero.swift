@@ -3,7 +3,7 @@
 //  SwiftMetalDemo
 //
 //  Created by Warren Moore on 10/23/14.
-//  Copyright (c) 2014 Metal By Example. All rights reserved.
+//  Copyright (c) 2014—2020 Warren Moore. All rights reserved.
 //
 
 import UIKit
@@ -18,7 +18,7 @@ class MBEDemoZeroViewController : MBEDemoViewController {
             view.contentScaleFactor = scale
 
             metalLayer.frame = bounds
-            metalLayer.drawableSize = CGSizeMake(size.width * scale, size.height * scale)
+            metalLayer.drawableSize = CGSize(width: size.width * scale, height: size.height * scale)
         }
     }
     
@@ -26,17 +26,17 @@ class MBEDemoZeroViewController : MBEDemoViewController {
         if let drawable = metalLayer.nextDrawable() {
             let passDescriptor = MTLRenderPassDescriptor()
             passDescriptor.colorAttachments[0].texture = drawable.texture
-            passDescriptor.colorAttachments[0].loadAction = .Clear
-            passDescriptor.colorAttachments[0].storeAction = .Store
-            passDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.8, 0.0, 0.0, 1.0)
+            passDescriptor.colorAttachments[0].loadAction = .clear
+            passDescriptor.colorAttachments[0].storeAction = .store
+            passDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.8, green: 0.0, blue: 0.0, alpha: 1.0)
             
-            let commandBuffer = commandQueue.commandBuffer()
+            guard let commandBuffer = commandQueue.makeCommandBuffer() else { return }
             
-            let commandEncoder = commandBuffer.renderCommandEncoderWithDescriptor(passDescriptor)!
-
-            commandEncoder.endEncoding()
+            if let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: passDescriptor) {
+                commandEncoder.endEncoding()
+            }
             
-            commandBuffer.presentDrawable(drawable)
+            commandBuffer.present(drawable)
             commandBuffer.commit()
         }
     }

@@ -3,7 +3,7 @@
 //  SwiftMetalDemo
 //
 //  Created by Warren Moore on 10/17/14.
-//  Copyright (c) 2014 Metal By Example. All rights reserved.
+//  Copyright (c) 2014—2020 Warren Moore. All rights reserved.
 //
 
 import UIKit
@@ -15,9 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var rootViewController: UIViewController!
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+    
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool
+    {
         switch MBEDemoNumber
         {
             case 0:
@@ -32,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 break
         }
         
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
         rootViewController.view.frame = window!.bounds
         window!.rootViewController = rootViewController
         window!.makeKeyAndVisible()
